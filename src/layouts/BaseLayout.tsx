@@ -1,42 +1,20 @@
-import Head from "next/head"
 import { FC, ReactElement } from "react"
-import { useRouter } from "next/router"
 
-import { Footer, Header } from "@/components"
-
-export interface Meta {
-  title?: string,
-  description?: string,
-  type?: string
-  image?: string
-}
+import { Footer, HeadComponent, HeadComponentProps, Header } from "@/components"
 
 interface BaseLayoutProps {
-  meta?: Meta
   children: ReactElement[]
+  meta?: HeadComponentProps
 }
 
-export const BaseLayout: FC<BaseLayoutProps> = ({ children, meta }) => {
-  const router = useRouter()
+export const BaseLayout: FC<BaseLayoutProps> = ({ children , meta}) => {
   return (
     <>
-      <Head>
-        <title>{meta?.title}</title>
-        <meta name="robots" content="follow, index" />
-        <meta content={meta?.description} name="description" />
-        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_APP_URL}${router.asPath}`} />
-        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_APP_URL}${router.asPath}`} />
-        <meta property="og:type" content={meta?.type} />
-        <meta property="og:site_name" content="Ray Nirola" />
-        <meta property="og:description" content={meta?.description} />
-        <meta property="og:title" content={meta?.title} />
-        <meta property="og:image" content={meta?.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@_raynirola" />
-        <meta name="twitter:title" content={meta?.title} />
-        <meta name="twitter:description" content={meta?.description} />
-        <meta name="twitter:image" content={meta?.image} />
-      </Head>
+      <HeadComponent
+        title={meta?.title}
+        image={meta?.image}
+        description={meta?.description}
+      />
       <Header />
       <main>
         {children}

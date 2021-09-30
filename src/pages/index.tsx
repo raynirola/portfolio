@@ -1,16 +1,18 @@
 import type { NextPage } from "next"
 import { BookOpenIcon } from "@heroicons/react/outline"
 
-import { BaseLayout, Meta } from "@/layouts"
-import { ContactForm, Intro, Projects, Section, SingleTimelineProps, Skills, Timeline } from "@/components"
+import { BaseLayout} from "@/layouts"
+import {
+  ContactForm,
+  Intro,
+  Projects,
+  Section,
+  SingleTimelineProps,
+  Skills,
+  Timeline
+} from "@/components"
 
 const Home: NextPage = () => {
-  const meta: Meta = {
-    title: "Ray Nirola",
-    description: "Ray's portfolio, showing recent projects, blog & articles, and current timelines.",
-    type: "website"
-  }
-
   const Academics: SingleTimelineProps[] = [
     {
       title: "BTech - Civil Engineering",
@@ -33,7 +35,7 @@ const Home: NextPage = () => {
   ]
 
   return (
-    <BaseLayout meta={meta}>
+    <BaseLayout>
       <Intro className="mt-12 max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0" />
 
       <Section title="Introduction" className="mt-20 max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0">
