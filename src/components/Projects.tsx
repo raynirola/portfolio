@@ -33,7 +33,7 @@ export const Projects: FC = (): ReactElement => {
         wip
       />
       <ProjectCard  
-        title="Sikkim P Y F"
+        title="S P Y F"
         image={renderImage("/images/projects/spyf.png")}
         wip
       />
