@@ -6,19 +6,18 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
     <div {...props}>
       <div className="flex flex-col-reverse items-center justify-between sm:flex-row">
         <div className="mt-8 sm:mt-0">
-          <h1 className="text-5xl font-extrabold text-gray-800 sm:text-7xl md:text-8xl dark:text-gray-200">
+          <h1 className="text-5xl font-extrabold sm:text-7xl md:text-8xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-700 to-green-700">
             Ray <br className="hidden sm:block" /> Nirola
           </h1>
-          <div className="flex justify-center mt-8 sm:justify-start">
+          <div className="flex justify-center mt-6 sm:justify-start space-x-2">
             <a
               href="https://github.com/raynirola"
               target="_blank"
               aria-label="Github Profile"
               rel="noopener noreferrer"
-              title="Ray Nirola, Github Profile"
-              className="relative mr-4">
-              <div className="text-gray-700 dark:text-gray-300">
-                <GitHubIcon className="w-6 h-6 transition duration-200 ease-in-out transform md:w-7 md:h-7 hover:scale-110 hover:rotate-12" />
+              title="Ray Nirola, Github Profile">
+              <div className="text-gray-700 dark:text-gray-300 grid place-items-center w-10 h-10 bg-gray-200 dark:bg-blueGray-800/80 rounded-md">
+                <GitHubIcon className="w-5 h-5 transition duration-200 ease-in-out transform hover:scale-125" />
               </div>
             </a>
             <a
@@ -26,10 +25,9 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               target="_blank"
               title="Send Email"
               rel="noopener noreferrer"
-              aria-label="Send Email"
-              className="relative mr-4">
-              <div className="text-gray-700 dark:text-gray-300">
-                <SendMailIcon className="w-6 h-6 transition duration-200 ease-in-out transform md:w-7 md:h-7 hover:scale-110 hover:rotate-12" />
+              aria-label="Send Email">
+              <div className="text-gray-700 dark:text-gray-300 grid place-items-center w-10 h-10 bg-gray-200 dark:bg-blueGray-800/80 rounded-md">
+                <SendMailIcon className="w-5 h-5 transition duration-200 ease-in-out transform hover:scale-125" />
               </div>
             </a>
             <a
@@ -37,10 +35,9 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               target="_blank"
               title="Ray Nirola, Twitter"
               rel="noopener noreferrer"
-              aria-label="Twitter Profile"
-              className="relative">
-              <div className="text-gray-700 dark:text-gray-300">
-                <TwitterIcon className="w-6 h-6 transition duration-200 ease-in-out transform md:w-7 md:h-7 hover:scale-110 hover:rotate-12" />
+              aria-label="Twitter Profile">
+              <div className="text-gray-700 dark:text-gray-300 grid place-items-center w-10 h-10 bg-gray-200 dark:bg-blueGray-800/80 rounded-md">
+                <TwitterIcon className="w-5 h-5 transition duration-200 ease-in-out transform hover:scale-125" />
               </div>
             </a>
           </div>
