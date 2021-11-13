@@ -1,43 +1,43 @@
 {
-    "name": "portfolio",
-    "description": "Ray's portfolio, showing case projects, blogs and many more.",
-    "author": {
-        "name": "Ray Nirola",
-        "email": "hi@raynirola.com",
-        "url": "https://raynirola.com"
-    },
-    "version": "0.0.1",
-    "license": "MIT",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
-    },
-    "dependencies": {
-        "axios": "^0.21.4",
-        "mailgun-js": "^0.22.0",
-        "next": "^12.0.2",
-        "next-themes": "^0.0.15",
-        "react": "^17.0.2",
-        "react-dom": "17.0.2",
-        "react-hook-form": "^7.18.1"
-    },
-    "devDependencies": {
-        "@heroicons/react": "^1.0.5",
-        "@tailwindcss/aspect-ratio": "^0.3.0",
-        "@tailwindcss/forms": "^0.3.4",
-        "@tailwindcss/line-clamp": "^0.2.2",
-        "@tailwindcss/typography": "^0.4.1",
-        "@types/node": "^16.11.6",
-        "@types/react": "^17.0.33",
-        "autoprefixer": "^10.4.0",
-        "eslint": "^8.1.0",
-        "eslint-config-next": "^12.0.2",
-        "postcss": "^8.3.11",
-        "prettier": "^2.4.1",
-        "tailwindcss": "^2.2.19",
-        "typescript": "^4.4.4"
-    }
+  "name": "portfolio",
+  "description": "Ray's portfolio, showing case studies, recent projects, blogs and many more.",
+  "author": {
+    "name": "Ray Nirola",
+    "email": "hi@raynirola.com",
+    "url": "https://raynirola.com"
+  },
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "mailgun-js": "^0.22.0",
+    "next": "^12.0.3",
+    "next-themes": "^0.0.15",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.19.5"
+  },
+  "devDependencies": {
+    "@heroicons/react": "^1.0.5",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/line-clamp": "^0.2.2",
+    "@tailwindcss/typography": "^0.4.1",
+    "@types/node": "^16.11.7",
+    "@types/react": "^17.0.34",
+    "autoprefixer": "^10.4.0",
+    "eslint": "7",
+    "eslint-config-next": "^12.0.3",
+    "postcss": "^8.3.11",
+    "prettier": "^2.4.1",
+    "tailwindcss": "^2.2.19",
+    "typescript": "^4.4.4"
+  }
 }
