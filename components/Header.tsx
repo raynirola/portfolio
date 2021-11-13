@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Logo, ThemeToggleButton } from "@/components/index"
+import Link from 'next/link'
+import { Logo, ThemeToggleButton } from './index'
 
 export const Header = () => {
   return (

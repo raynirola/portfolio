@@ -1,21 +1,25 @@
-import { FC } from "react"
-import Head from "next/head"
-import { useRouter } from "next/router"
+import { FC } from 'react'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
-export interface HeadComponentProps{
-  title?: string,
-  description?: string,
+export interface HeadComponentProps {
+  title?: string
+  description?: string
   image?: string
 }
 
-const HeadComponent: FC<HeadComponentProps> = ({title= 'Ray Nirola', description= 'Ideas to execution, perfectly.', image= `${process.env.NEXT_PUBLIC_APP_URL}/images/me.png`}) => {
+const HeadComponent: FC<HeadComponentProps> = ({
+  title = 'Ray Nirola',
+  description = 'Ideas to execution, perfectly.',
+  image = `${process.env.NEXT_PUBLIC_APP_URL}/images/me.png`,
+}) => {
   const router = useRouter()
   return (
     <Head>
-      <link rel="apple-touch-icon" sizes="180x180" href={"/apple-touch-icon.png"} />
-      <link rel="icon" type="image/png" sizes="32x32" href={"/favicon-32x32.png"} />
-      <link rel="icon" type="image/png" sizes="16x16" href={"/favicon-16x16.png"} />
-      <link rel="manifest" href={"/site.webmanifest"} />
+      <link rel="apple-touch-icon" sizes="180x180" href={'/apple-touch-icon.png'} />
+      <link rel="icon" type="image/png" sizes="32x32" href={'/favicon-32x32.png'} />
+      <link rel="icon" type="image/png" sizes="16x16" href={'/favicon-16x16.png'} />
+      <link rel="manifest" href={'/site.webmanifest'} />
 
       <title>{title}</title>
       <meta name="robots" content="follow, index" />
