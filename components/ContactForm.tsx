@@ -1,59 +1,41 @@
 import axios from 'axios'
-import { FC, HTMLAttributes, useEffect, useState } from 'react'
+import { FC, HTMLAttributes } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import { CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/solid'
+import { useQuery } from 'react-query'
+import { useNotification } from '@/contexts/NotificationContext'
 
 export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
-  const { register, handleSubmit, formState, reset } = useForm()
-  const [serverError, setServerError] = useState(false)
-  const [isFormSubmitting, setIsFormSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const { addNotification } = useNotification()
+  const { register, handleSubmit, formState, reset, getValues } = useForm()
 
-  const handleFormSubmit: SubmitHandler<FieldValues> = data => {
-    setIsFormSubmitting(true)
-    sendContactMessage(data)
-      .then(response => setSuccess(response.status === 201))
-      .catch(error => setServerError(error.response.data.message))
-      .finally(() => {
-        setIsFormSubmitting(false)
+  const sendContactMessage = async () => await axios.post('/api/contact', { ...getValues() })
+
+  const handleFormSubmit: SubmitHandler<FieldValues> = async () => await refetch()
+
+  const { isLoading, refetch, isFetching }: any = useQuery(
+    'sendContactMessage',
+    sendContactMessage,
+    {
+      enabled: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      onSuccess: () => {
+        addNotification({
+          message: 'Message sent successfully, will get back to you soon.',
+          title: 'Message sent',
+          type: 'success',
+        })
         reset()
-      })
-  }
-
-  const sendContactMessage = async (data: FieldValues) => await axios.post('/api/contact', data)
-
-  const SuccessMessage = () => {
-    useEffect(() => {
-      const successTimeout = setTimeout(() => setSuccess(false), 5000)
-      return () => clearTimeout(successTimeout)
-    }, [])
-
-    return (
-      <div className="flex items-start">
-        <CheckCircleIcon className="flex-shrink-0 w-5 h-5 mr-2 text-green-600" aria-hidden="true" />
-        <p className="text-sm text-gray-700 dark:text-gray-300">
-          Message sent successfully, will get back to you soon.
-        </p>
-      </div>
-    )
-  }
-
-  const ErrorMessage = () => {
-    useEffect(() => {
-      const errorTimeout = setTimeout(() => setServerError(false), 5000)
-      return () => clearTimeout(errorTimeout)
-    }, [])
-
-    return (
-      <div className="flex items-start">
-        <InformationCircleIcon
-          className="flex-shrink-0 w-5 h-5 mr-2 text-red-500"
-          aria-hidden="true"
-        />
-        <p className="text-sm text-gray-700 dark:text-gray-300">{serverError}</p>
-      </div>
-    )
-  }
+      },
+      onError: (err: any) => {
+        addNotification({
+          message: err.message,
+          title: 'Something went wrong',
+          type: 'danger',
+        })
+      },
+    }
+  )
 
   const nameFieldValidation = {
     required: {
@@ -180,15 +162,11 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
         )}
       </div>
       <div className="flex flex-col-reverse justify-between py-3 md:flex-row md:items-center">
-        <div>
-          {serverError && <ErrorMessage />}
-          {success && <SuccessMessage />}
-        </div>
         <button
-          disabled={isFormSubmitting}
+          disabled={isFetching || isLoading || formState.isSubmitting}
           type="submit"
           className="mb-4 md:mb-0 inline-flex justify-center py-2.5 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-900">
-          {isFormSubmitting ? 'Sending..' : 'Send  Message'}
+          {formState.isSubmitting ? 'Sending..' : 'Send  Message'}
         </button>
       </div>
     </form>
