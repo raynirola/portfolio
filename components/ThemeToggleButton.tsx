@@ -14,9 +14,7 @@ const ThemeToggleButton = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
     addNotification({
       title: 'Theme changed',
-      message: `Theme changed to ${
-        resolvedTheme === 'dark' ? 'light' : 'dark'
-      } and saved to local storage lorem ipsum dolor sit amet`,
+      message: `Theme changed to ${resolvedTheme === 'dark' ? 'LIGHT' : 'DARK'}`,
       type: 'info',
     })
   }
