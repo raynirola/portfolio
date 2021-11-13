@@ -1,5 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { Transition } from '@headlessui/react'
+
 import { Notification } from '@/components/Notification'
 
 export const NotificationContext = createContext(null)
@@ -34,15 +36,25 @@ export const NotificationProvider = ({ children }) => {
     <NotificationContext.Provider value={{ addNotification }}>
       {children}
       <Portal>
-        <div className="fixed top-0 right-0 left-0 sm:top-4 sm:right-4 sm:left-auto pointer-events-none z-20">
+        <div className="fixed top-0 right-0 left-0 sm:top-4 sm:right-4 sm:left-auto pointer-events-none z-20 sm:max-w-xs sm:w-full">
           {notifications.map(notification => (
-            <Notification
-              key={notification.id}
-              title={notification.title}
-              message={notification.message}
-              type={notification.type}
-              id={notification.id}
-            />
+            <Transition
+              key={notifications.indexOf(notification)}
+              show
+              appear
+              enter="transition duration-300 transform ease-in"
+              enterFrom="opacity-0 translate-x-full"
+              enterTo="opacity-100 translate-x-0"
+              leave="transition duration-300 transform ease-out"
+              leaveFrom="opacity-100 translate-x-0"
+              leaveTo="opacity-0 translate-x-full">
+              <Notification
+                title={notification.title}
+                message={notification.message}
+                type={notification.type}
+                id={notification.id}
+              />
+            </Transition>
           ))}
         </div>
       </Portal>
