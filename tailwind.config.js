@@ -1,21 +1,26 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: "jit",
-  purge: [ "./src/**/*.{js,jsx,ts,tsx}" ],
-  darkMode: "class",
+  mode: 'jit',
+  purge: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './layouts/**/*.{js,jsx,ts,tsx}',
+    './contexts/**/*.{js,jsx,ts,tsx}',
+  ],
+  darkMode: 'class',
   theme: {
     extend: {
-      colors
-    }
+      colors,
+    },
   },
   variants: {
-    extend: {}
+    extend: {},
   },
   plugins: [
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
-    require("@tailwindcss/aspect-ratio"),
-  ]
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
