@@ -34,7 +34,7 @@ export const NotificationProvider = ({ children }) => {
     <NotificationContext.Provider value={{ addNotification }}>
       {children}
       <Portal>
-        <div className="fixed top-4 right-4 w-max pointer-events-none z-20">
+        <div className="fixed top-0 right-0 left-0 sm:top-4 sm:right-4 sm:left-auto pointer-events-none z-20">
           {notifications.map(notification => (
             <Notification
               key={notification.id}
