@@ -25,8 +25,8 @@ const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, wip = false }): 
   function renderComingSoon() {
     return (
       <div className="absolute">
-        <div className="absolute right-1 top-1 rounded-md text-xs bg-green-100 text-green-600 font-light px-1 py-0.5">
-          coming soon
+        <div className="absolute right-1 top-1 rounded-md text-[10px] bg-green-200 text-green-700 font-medium px-1 py-0.5">
+          WIP
         </div>
       </div>
     )
