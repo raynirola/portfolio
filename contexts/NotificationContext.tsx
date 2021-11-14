@@ -65,7 +65,7 @@ export const NotificationProvider = ({ children }) => {
 const Portal = ({ children }) => {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
-  return mounted ? createPortal(children, document.body) : null
+  return mounted ? createPortal(children, document.getElementById('portal')) : null
 }
 
 export const useNotification = () => {
