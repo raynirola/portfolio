@@ -4,6 +4,8 @@ import { Transition } from '@headlessui/react'
 
 import { Notification } from '@/components/Notification'
 
+const crypto = require('crypto')
+
 export const NotificationContext = createContext(null)
 
 export type NotificationType = {
@@ -28,7 +30,7 @@ export const NotificationProvider = ({ children }) => {
 
   const addNotification = useCallback(
     notification =>
-      setNotifications([...notifications, { ...notification, id: crypto.randomUUID() }]),
+      setNotifications([...notifications, { ...notification, id: crypto.randomUUID }]),
     [notifications]
   )
 
