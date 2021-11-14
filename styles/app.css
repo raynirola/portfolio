@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .header {
+    @apply bg-opacity-0 backdrop-blur-lg;
+  }
+
+  @supports not (backdrop-filter: none) {
+    .header {
+      @apply backdrop-filter-none bg-opacity-[95%] bg-gray-100 dark:bg-coolGray-900 dark:bg-opacity-[95%];
+    }
+  }
+}
