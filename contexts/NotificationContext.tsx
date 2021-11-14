@@ -22,7 +22,7 @@ export const NotificationProvider = ({ children }) => {
     if (notifications.length > 0) {
       const timeout = setTimeout(
         () => setNotifications(notifications => notifications.slice(1)),
-        5000
+        4000
       )
       return () => clearTimeout(timeout)
     }
@@ -42,14 +42,11 @@ export const NotificationProvider = ({ children }) => {
           {notifications.map(notification => (
             <Transition
               key={notifications.indexOf(notification)}
-              show
+              show={notifications.some(n => n.id === notification.id)}
               appear
               enter="transition duration-300 transform ease-in"
               enterFrom="opacity-0 translate-x-full"
-              enterTo="opacity-100 translate-x-0"
-              leave="transition duration-300 transform ease-out"
-              leaveFrom="opacity-100 translate-x-0"
-              leaveTo="opacity-0 translate-x-full">
+              enterTo="opacity-100 translate-x-0">
               <Notification
                 title={notification.title}
                 message={notification.message}
