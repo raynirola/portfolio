@@ -1,6 +1,5 @@
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
-import Link from 'next/link'
 
 const Logo = () => {
   const { resolvedTheme } = useTheme()
@@ -32,11 +31,9 @@ const Logo = () => {
   }
 
   return (
-    <Link href="/" scroll>
-      <a className="relative block w-12 h-12 -ml-3 transition duration-200 ease-in-out transform hover:scale-110">
-        {resolvedTheme === 'dark' ? <DarkLogo /> : <LightLogo />}
-      </a>
-    </Link>
+    <div className="relative block w-12 h-12 -ml-3 transition duration-200 ease-in-out transform hover:scale-110">
+      {resolvedTheme === 'dark' ? <DarkLogo /> : <LightLogo />}
+    </div>
   )
 }
 

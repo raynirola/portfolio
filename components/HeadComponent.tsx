@@ -9,8 +9,8 @@ export interface HeadComponentProps {
 }
 
 const HeadComponent: FC<HeadComponentProps> = ({
-  title = 'Ray Nirola',
-  description = 'Ideas to execution, perfectly.',
+  title = 'Ray Nirola | Full Stack Developer',
+  description = 'Ideas to execution, perfectly. Ethereum Blockchain, Web3.js, React, Next.js, GraphQL, Node.js, MySQL, PostgresSQL, Express, AWS, and more.',
   image = `${process.env.NEXT_PUBLIC_APP_URL}/images/me.png`,
 }) => {
   const router = useRouter()
@@ -24,7 +24,11 @@ const HeadComponent: FC<HeadComponentProps> = ({
       <title>{title}</title>
       <meta name="robots" content="follow, index" />
       <meta content={description} name="description" />
-      <link rel="canonical" href={`${process.env.NEXT_PUBLIC_APP_URL}${router.asPath}`} />
+      <meta
+        name="keywords"
+        content="raynirola, sikkim, full stack developer, developer, India, gangtok, crypto, blockchain, laravel, vuejs, python, flutter, git, ethereum, web3, react, next.js, graphql, node.js, mysql, postgresql, express, aws, javascript, typescript, node, nodejs, javascript, typescript"
+      />
+      <link rel="canonical" href={process.env.NEXT_PUBLIC_APP_URL} />
 
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Ray Nirola" />

@@ -11,9 +11,9 @@ const Home: NextPage = () => {
       <Section
         title="Introduction"
         className="mt-20 max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0">
-        <p className="mb-4 text-base text-gray-800 dark:text-gray-300">
+        <h1 className="mb-4 text-base text-gray-800 dark:text-gray-300">
           I am Ray, from Sikkim, India.
-        </p>
+        </h1>
         <p className="mb-4 text-base text-gray-800 dark:text-gray-300">
           I enjoy creating high-quality software products with a complex logic behind it.
           <br />

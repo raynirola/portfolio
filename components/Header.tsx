@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Logo, ThemeToggleButton } from './index'
 
 export const Header = () => {
@@ -8,9 +7,6 @@ export const Header = () => {
         <nav className="flex items-center justify-between">
           <Logo />
           <div className="flex items-center space-x-8">
-            <Link href="/" scroll>
-              <a className="text-gray-900 dark:text-gray-100">Home</a>
-            </Link>
             <ThemeToggleButton />
           </div>
         </nav>

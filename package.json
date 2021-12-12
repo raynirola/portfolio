@@ -12,12 +12,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node post-build.js",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "mailgun-js": "^0.22.0",
     "next": "^12.0.3",
     "next-themes": "^0.0.15",
     "react": "^17.0.2",
@@ -27,6 +27,7 @@
     "@headlessui/react": "^1.4.2"
   },
   "devDependencies": {
+    "mailgun-js": "^0.22.0",
     "@heroicons/react": "^1.0.5",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
