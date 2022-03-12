@@ -30,11 +30,11 @@ const Home: NextPage = () => {
         description={
           <span>
             Here are some of my most favourite projects that I enjoyed coding and designing from
-            scratch, both with a team and alone. Checkout my &nbsp;
+            scratch, both with a team and alone. Checkout my{' '}
             <a
               target="_blank"
               rel="noreferrer nofollow noopener"
-              className="text-green-600 underline hover:text-green-500"
+              className="text-purple-700 underline hover:text-purple-500"
               href="https://github.com/raynirola">
               Github
             </a>

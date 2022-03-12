@@ -48,7 +48,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, wip = false }): 
 
   function renderAsLink(url: string): ReactElement {
     return (
-      <div className="aspect-h-2 aspect-w-4 relative overflow-hidden rounded-md bg-white ring-1 ring-transparent ring-offset-2 ring-offset-gray-100 hover:ring-2 hover:ring-green-600 dark:ring-offset-gray-800">
+      <div className="aspect-h-2 aspect-w-4 relative overflow-hidden rounded-md bg-white ring-1 ring-transparent ring-offset-2 ring-offset-gray-100 hover:ring-2 hover:ring-purple-500 dark:ring-offset-gray-800">
         {wip && renderComingSoon()}
         <Link href={url}>
           <a

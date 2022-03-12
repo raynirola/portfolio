@@ -6,7 +6,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
     <div {...props}>
       <div className="flex flex-col-reverse items-center justify-between sm:flex-row">
         <div className="mt-8 sm:mt-0">
-          <h2 className="bg-gradient-to-r from-cyan-700 to-green-700 decoration-slice bg-clip-text text-5xl font-extrabold text-transparent sm:text-7xl md:text-8xl">
+          <h2 className="decoration-slice text-5xl font-extrabold text-slate-900 text-transparent dark:text-slate-200 sm:text-7xl md:text-8xl">
             Ray <br className="hidden sm:block" /> Nirola
           </h2>
           <div className="mt-6 flex justify-center space-x-2 sm:justify-start">

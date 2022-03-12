@@ -96,7 +96,7 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
             className={`mt-1 py-3 px-4 ${
               formState.errors.name
                 ? 'focus:border-red-500 focus:ring-red-500'
-                : 'focus:border-green-500 focus:ring-green-500'
+                : 'focus:border-purple-700 focus:ring-purple-700'
             } block w-full rounded-md border-gray-300 shadow-sm dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
           />
           {formState.errors.name && (
@@ -121,7 +121,7 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
             className={`mt-1 py-3 px-4 ${
               formState.errors.email
                 ? 'focus:border-red-500 focus:ring-red-500'
-                : 'focus:border-green-500 focus:ring-green-500'
+                : 'focus:border-purple-700 focus:ring-purple-700'
             } block w-full rounded-md border-gray-300 shadow-sm dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
           />
           {formState.errors.email && (
@@ -146,7 +146,7 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
             className={`py-3 px-4 shadow-sm ${
               formState.errors.message
                 ? 'focus:border-red-500 focus:ring-red-500'
-                : 'focus:border-green-500 focus:ring-green-500'
+                : 'focus:border-purple-700 focus:ring-purple-700'
             } mt-1 block w-full resize-none rounded-md border border-gray-300 dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
             placeholder="Your message here."
             defaultValue={''}
@@ -165,7 +165,7 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
         <button
           disabled={isFetching || isLoading || formState.isSubmitting}
           type="submit"
-          className="mb-4 inline-flex justify-center rounded-md border border-transparent bg-green-700 py-2.5 px-6 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 md:mb-0">
+          className="mb-4 inline-flex justify-center rounded-md border border-transparent bg-purple-700 py-2.5 px-6 text-sm font-medium text-white shadow-sm hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:ring-offset-2 dark:focus:ring-offset-gray-900 md:mb-0">
           {formState.isSubmitting ? 'Sending..' : 'Send  Message'}
         </button>
       </div>
