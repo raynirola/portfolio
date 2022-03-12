@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { sendMail } from '@/lib/mail'
+import { mailer } from '@/lib/mail'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-      const response = await sendMail(data)
+      const response = await mailer.messages().send(data)
       res.status(200).json({ message: response.message })
     } catch (_error) {
       const error = _error as Error
