@@ -11,15 +11,15 @@ const Home: NextPage = () => {
       <Section
         title="Introduction"
         className="mx-auto mt-20 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl">
-        <h1 className="mb-4 text-base text-gray-800 dark:text-gray-300">
+        <h1 className="mb-4 text-base text-gray-800 dark:text-slate-400">
           I am Ray, from Sikkim, India.
         </h1>
-        <p className="mb-4 text-base text-gray-800 dark:text-gray-300">
+        <p className="mb-4 text-base text-gray-800 dark:text-slate-400">
           I enjoy creating high-quality software products with a complex logic behind it.
           <br />
           My everyday technology stack includes React, Vue, Python, Flutter and Laravel.
         </p>
-        <p className="text-base text-gray-800 dark:text-gray-300">
+        <p className="text-base text-gray-800 dark:text-slate-400">
           I am also currently learning more about Ethereum blockchain and cyber-security.
         </p>
       </Section>

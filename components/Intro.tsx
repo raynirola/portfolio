@@ -6,7 +6,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
     <div {...props}>
       <div className="flex flex-col-reverse items-center justify-between sm:flex-row">
         <div className="mt-8 sm:mt-0">
-          <h2 className="decoration-slice text-5xl font-extrabold text-slate-900 text-transparent dark:text-slate-200 sm:text-7xl md:text-8xl">
+          <h2 className="decoration-slice text-5xl font-extrabold text-slate-900 dark:text-slate-200 sm:text-7xl md:text-8xl">
             Ray <br className="hidden sm:block" /> Nirola
           </h2>
           <div className="mt-6 flex justify-center space-x-2 sm:justify-start">
@@ -16,7 +16,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               aria-label="Github Profile"
               rel="noopener noreferrer"
               title="Ray Nirola, Github Profile">
-              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-blueGray-800/80 dark:text-gray-300">
+              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-slate-800/80 dark:text-gray-300">
                 <GitHubIcon className="h-5 w-5 transform transition duration-200 ease-in-out hover:scale-125" />
               </div>
             </a>
@@ -26,7 +26,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               title="Send Email"
               rel="noopener noreferrer"
               aria-label="Send Email">
-              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-blueGray-800/80 dark:text-gray-300">
+              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-slate-800/80 dark:text-gray-300">
                 <SendMailIcon className="h-5 w-5 transform transition duration-200 ease-in-out hover:scale-125" />
               </div>
             </a>
@@ -36,7 +36,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               title="Ray Nirola, Twitter"
               rel="noopener noreferrer"
               aria-label="Twitter Profile">
-              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-blueGray-800/80 dark:text-gray-300">
+              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-slate-800/80 dark:text-gray-300">
                 <TwitterIcon className="h-5 w-5 transform transition duration-200 ease-in-out hover:scale-125" />
               </div>
             </a>
@@ -64,7 +64,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
   )
 }
 
-const GitHubIcon = (props: SVGProps<SVGSVGElement>) => {
+const GitHubIcon = (props: Pick<SVGProps<SVGSVGElement>, 'className'>) => {
   return (
     <svg
       viewBox="0 0 496 512"
@@ -78,7 +78,7 @@ const GitHubIcon = (props: SVGProps<SVGSVGElement>) => {
   )
 }
 
-const SendMailIcon = (props: SVGProps<SVGSVGElement>) => {
+const SendMailIcon = (props: Pick<SVGProps<SVGSVGElement>, 'className'>) => {
   return (
     <svg
       stroke="currentColor"
@@ -92,7 +92,7 @@ const SendMailIcon = (props: SVGProps<SVGSVGElement>) => {
   )
 }
 
-const TwitterIcon = (props: SVGProps<SVGSVGElement>) => {
+const TwitterIcon = (props: Pick<SVGProps<SVGSVGElement>, 'className'>) => {
   return (
     <svg
       stroke="currentColor"
@@ -106,7 +106,7 @@ const TwitterIcon = (props: SVGProps<SVGSVGElement>) => {
   )
 }
 
-const HeroPattern = (props: SVGProps<SVGSVGElement>) => {
+const HeroPattern = (props: Pick<SVGProps<SVGSVGElement>, 'className'>) => {
   return (
     <svg
       width={504}
@@ -149,7 +149,7 @@ const HeroPattern = (props: SVGProps<SVGSVGElement>) => {
   )
 }
 
-const HeroImageMask = (props: SVGProps<SVGSVGElement>) => {
+const HeroImageMask = (props: Pick<SVGProps<SVGSVGElement>, 'className'>) => {
   return (
     <svg width={0} height={0} {...props}>
       <defs>
