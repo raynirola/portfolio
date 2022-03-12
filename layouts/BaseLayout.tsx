@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react'
 
-import { Footer, HeadComponent, HeadComponentProps, Header } from '@/components'
+import { Footer, HeadComponent, HeadComponentProps, Header, UkraineBanner } from '@/components'
 
 interface BaseLayoutProps {
   children: ReactElement | ReactElement[]
@@ -15,6 +15,7 @@ export const BaseLayout: FC<BaseLayoutProps> = props => {
         image={props.meta?.image}
         description={props.meta?.description}
       />
+      <UkraineBanner />
       <Header />
       <main>{props.children}</main>
       <Footer />
