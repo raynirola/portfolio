@@ -3,16 +3,20 @@ import { FC, ReactElement } from 'react'
 import { Footer, HeadComponent, HeadComponentProps, Header } from '@/components'
 
 interface BaseLayoutProps {
-  children: ReactElement[]
+  children: ReactElement | ReactElement[]
   meta?: HeadComponentProps
 }
 
-export const BaseLayout: FC<BaseLayoutProps> = ({ children, meta }) => {
+export const BaseLayout: FC<BaseLayoutProps> = props => {
   return (
     <>
-      <HeadComponent title={meta?.title} image={meta?.image} description={meta?.description} />
+      <HeadComponent
+        title={props.meta?.title}
+        image={props.meta?.image}
+        description={props.meta?.description}
+      />
       <Header />
-      <main>{children}</main>
+      <main>{props.children}</main>
       <Footer />
     </>
   )
