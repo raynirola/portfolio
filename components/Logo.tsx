@@ -1,7 +1,11 @@
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 
-const Logo = () => {
+interface ILogo {
+  (props: { default?: boolean }): JSX.Element
+}
+
+const Logo: ILogo = props => {
   const { resolvedTheme } = useTheme()
 
   const DarkLogo = () => {
@@ -27,6 +31,27 @@ const Logo = () => {
         placeholder="blur"
         alt="Me"
       />
+    )
+  }
+
+  const DefaultLogo = () => {
+    return (
+      <Image
+        src={require('public/images/logo.jpg')}
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        placeholder="blur"
+        alt="Me"
+      />
+    )
+  }
+
+  if (props.default) {
+    return (
+      <div className="relative block h-12 w-12 transform overflow-hidden rounded-full transition duration-200 ease-in-out hover:scale-110">
+        <DefaultLogo />
+      </div>
     )
   }
 
