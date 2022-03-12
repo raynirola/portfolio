@@ -17,7 +17,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, wip = false }): 
   function renderPlaceholder(): ReactElement {
     return (
       <div className=" h-10 w-20 sm:h-12 sm:w-24">
-        <PhotographIcon className="mx-auto w-9 h-9 text-gray-400/50" />
+        <PhotographIcon className="mx-auto h-9 w-9 text-gray-400/50" />
       </div>
     )
   }
@@ -25,7 +25,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, wip = false }): 
   function renderComingSoon() {
     return (
       <div className="absolute">
-        <div className="absolute right-1 top-1 rounded-md text-[10px] bg-green-200 text-green-700 font-medium px-1 py-0.5">
+        <div className="absolute right-1 top-1 rounded-md bg-green-200 px-1 py-0.5 text-[10px] font-medium text-green-700">
           WIP
         </div>
       </div>
@@ -34,11 +34,11 @@ const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, wip = false }): 
 
   function renderAsDiv(): ReactElement {
     return (
-      <div className="aspect-h-2 aspect-w-4 bg-white rounded-md overflow-hidden">
+      <div className="aspect-h-2 aspect-w-4 overflow-hidden rounded-md bg-white">
         {wip && renderComingSoon()}
-        <div className="p-2 text-center text-gray-700 grid place-items-center place-content-center">
+        <div className="grid place-content-center place-items-center p-2 text-center text-gray-700">
           {image ? renderImage() : renderPlaceholder()}
-          <p className="mt-2 text-xs text-gray-700 uppercase font-semibold tracking-wider">
+          <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-gray-700">
             {title}
           </p>
         </div>
@@ -48,15 +48,15 @@ const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, wip = false }): 
 
   function renderAsLink(url: string): ReactElement {
     return (
-      <div className="relative aspect-h-2 aspect-w-4 bg-white rounded-md overflow-hidden ring-1 ring-transparent ring-offset-gray-100 ring-offset-2 dark:ring-offset-gray-800 hover:ring-2 hover:ring-green-600">
+      <div className="aspect-h-2 aspect-w-4 relative overflow-hidden rounded-md bg-white ring-1 ring-transparent ring-offset-2 ring-offset-gray-100 hover:ring-2 hover:ring-green-600 dark:ring-offset-gray-800">
         {wip && renderComingSoon()}
         <Link href={url}>
           <a
             target="_blank"
             rel="nofollow noopener noreferrer"
-            className="p-2 text-center text-gray-700 grid place-items-center place-content-center">
+            className="grid place-content-center place-items-center p-2 text-center text-gray-700">
             {image ? renderImage() : renderPlaceholder()}
-            <p className="mt-2 text-xs text-gray-700 uppercase font-semibold tracking-wider">
+            <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-gray-700">
               {title}
             </p>
           </a>

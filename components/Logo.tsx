@@ -31,7 +31,7 @@ const Logo = () => {
   }
 
   return (
-    <div className="relative block w-12 h-12 -ml-3 transition duration-200 ease-in-out transform hover:scale-110">
+    <div className="relative -ml-3 block h-12 w-12 transform transition duration-200 ease-in-out hover:scale-110">
       {resolvedTheme === 'dark' ? <DarkLogo /> : <LightLogo />}
     </div>
   )

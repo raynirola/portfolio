@@ -6,11 +6,11 @@ import { ContactForm, Intro, Projects, Section, Skills } from '@/components'
 const Home: NextPage = () => {
   return (
     <BaseLayout>
-      <Intro className="mt-12 max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0" />
+      <Intro className="mx-auto mt-12 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl" />
 
       <Section
         title="Introduction"
-        className="mt-20 max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0">
+        className="mx-auto mt-20 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl">
         <h1 className="mb-4 text-base text-gray-800 dark:text-gray-300">
           I am Ray, from Sikkim, India.
         </h1>
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       </Section>
 
       <Section
-        className="mt-16 max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0"
+        className="mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl"
         title="Projects"
         description={
           <span>
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
       </Section>
 
       <Section
-        className="mt-16 max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0"
+        className="mx-auto mt-16 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl"
         title="Skills"
         description="I am passionate about using cutting-edge technologies. These are the tools I am most familiar with and build things every day.">
         <div className="mt-8">
@@ -55,9 +55,9 @@ const Home: NextPage = () => {
         </div>
       </Section>
 
-      <div className="bg-white dark:bg-black/70 py-12 mt-16">
+      <div className="mt-16 bg-white py-12 dark:bg-black/70">
         <Section
-          className="max-w-3xl lg:max-w-4xl xl:max-w-5xl px-4 mx-auto sm:px-6 lg:px-0"
+          className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl"
           title="Wanna reach out?"
           description="Feel free to drop me a message if you have some interesting offer or you want to hang out.">
           <ContactForm className="mt-12" />

@@ -6,18 +6,18 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
     <div {...props}>
       <div className="flex flex-col-reverse items-center justify-between sm:flex-row">
         <div className="mt-8 sm:mt-0">
-          <h2 className="text-5xl font-extrabold sm:text-7xl md:text-8xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-700 to-green-700 decoration-slice">
+          <h2 className="bg-gradient-to-r from-cyan-700 to-green-700 decoration-slice bg-clip-text text-5xl font-extrabold text-transparent sm:text-7xl md:text-8xl">
             Ray <br className="hidden sm:block" /> Nirola
           </h2>
-          <div className="flex justify-center mt-6 sm:justify-start space-x-2">
+          <div className="mt-6 flex justify-center space-x-2 sm:justify-start">
             <a
               href="https://github.com/raynirola"
               target="_blank"
               aria-label="Github Profile"
               rel="noopener noreferrer"
               title="Ray Nirola, Github Profile">
-              <div className="text-gray-700 dark:text-gray-300 grid place-items-center w-10 h-10 bg-gray-200 dark:bg-blueGray-800/80 rounded-md">
-                <GitHubIcon className="w-5 h-5 transition duration-200 ease-in-out transform hover:scale-125" />
+              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-blueGray-800/80 dark:text-gray-300">
+                <GitHubIcon className="h-5 w-5 transform transition duration-200 ease-in-out hover:scale-125" />
               </div>
             </a>
             <a
@@ -26,8 +26,8 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               title="Send Email"
               rel="noopener noreferrer"
               aria-label="Send Email">
-              <div className="text-gray-700 dark:text-gray-300 grid place-items-center w-10 h-10 bg-gray-200 dark:bg-blueGray-800/80 rounded-md">
-                <SendMailIcon className="w-5 h-5 transition duration-200 ease-in-out transform hover:scale-125" />
+              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-blueGray-800/80 dark:text-gray-300">
+                <SendMailIcon className="h-5 w-5 transform transition duration-200 ease-in-out hover:scale-125" />
               </div>
             </a>
             <a
@@ -36,18 +36,18 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               title="Ray Nirola, Twitter"
               rel="noopener noreferrer"
               aria-label="Twitter Profile">
-              <div className="text-gray-700 dark:text-gray-300 grid place-items-center w-10 h-10 bg-gray-200 dark:bg-blueGray-800/80 rounded-md">
-                <TwitterIcon className="w-5 h-5 transition duration-200 ease-in-out transform hover:scale-125" />
+              <div className="grid h-10 w-10 place-items-center rounded-md bg-gray-200 text-gray-700 dark:bg-blueGray-800/80 dark:text-gray-300">
+                <TwitterIcon className="h-5 w-5 transform transition duration-200 ease-in-out hover:scale-125" />
               </div>
             </a>
           </div>
         </div>
 
         <div className="relative">
-          <HeroPattern className="absolute z-0 w-48 h-auto text-green-600 opacity-50 top-12 left-4 lg:w-64" />
+          <HeroPattern className="absolute top-12 left-4 z-0 h-auto w-48 text-green-600 opacity-50 lg:w-64" />
           <HeroImageMask />
           <div
-            className="relative z-10 w-48 h-48 lg:w-64 lg:h-60"
+            className="relative z-10 h-48 w-48 lg:h-60 lg:w-64"
             style={{ clipPath: 'url(#heroImageMask)' }}>
             <Image
               alt="Ray Nirola"

@@ -4,7 +4,7 @@ const MostPopularPosts = () => {
   return (
     <Section
       title="Most Popular Posts"
-      className="mt-16 max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto sm:px-6 lg:px-0"
+      className="mx-auto mt-16 max-w-3xl sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl"
       titleClasses="ml-4 sm:ml-0">
       <BlogCard
         title="Everything I Know About Style Guides, Design Systems, and Component Libraries"

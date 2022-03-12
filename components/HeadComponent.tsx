@@ -11,7 +11,7 @@ export interface HeadComponentProps {
 const HeadComponent: FC<HeadComponentProps> = ({
   title = 'Ray Nirola | Full Stack Developer',
   description = 'Ideas to execution, perfectly. Ethereum Blockchain, Web3.js, React, Next.js, GraphQL, Node.js, MySQL, PostgresSQL, Express, AWS, and more.',
-  image = `${process.env.NEXT_PUBLIC_APP_URL}/images/me.png`,
+  image = `${process.env.NEXT_PUBLIC_APP_URL}/images/me.png`
 }) => {
   const router = useRouter()
   return (

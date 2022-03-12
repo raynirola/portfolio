@@ -1,18 +1,18 @@
-import axios from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
 import { FC, HTMLAttributes } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
 import { useNotification } from '@/contexts/NotificationContext'
 
 export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
-  const { addNotification } = useNotification()
+  const { notify } = useNotification()
   const { register, handleSubmit, formState, reset, getValues } = useForm()
 
   const sendContactMessage = async () => await axios.post('/api/contact', { ...getValues() })
 
   const handleFormSubmit: SubmitHandler<FieldValues> = async () => await refetch()
 
-  const { isLoading, refetch, isFetching }: any = useQuery(
+  const { isLoading, refetch, isFetching } = useQuery<AxiosResponse, AxiosError>(
     'sendContactMessage',
     sendContactMessage,
     {
@@ -20,62 +20,62 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
       onSuccess: () => {
-        addNotification({
+        notify({
           message: 'Message sent successfully, will get back to you soon.',
           title: 'Message sent',
-          type: 'success',
+          type: 'success'
         })
         reset()
       },
-      onError: (err: any) => {
-        addNotification({
+      onError: err => {
+        notify({
           message: err.message,
           title: 'Something went wrong',
-          type: 'danger',
+          type: 'danger'
         })
-      },
+      }
     }
   )
 
   const nameFieldValidation = {
     required: {
       value: true,
-      message: 'The name field is required.',
+      message: 'The name field is required.'
     },
     maxLength: {
       value: 32,
-      message: 'The name should not be more than 32 characters.',
+      message: 'The name should not be more than 32 characters.'
     },
     pattern: {
       value: /^[a-zA-Z0-9/ ]*$/,
-      message: 'The name may only contain letters and numbers.',
-    },
+      message: 'The name may only contain letters and numbers.'
+    }
   }
 
   const emailFieldValidation = {
     required: {
       value: true,
-      message: 'The email field is required.',
+      message: 'The email field is required.'
     },
     maxLength: {
       value: 255,
-      message: 'The email must be less than 255 characters.',
+      message: 'The email must be less than 255 characters.'
     },
     pattern: {
       value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.+([a-z]){2,6}$/,
-      message: 'Invalid email format.',
-    },
+      message: 'Invalid email format.'
+    }
   }
 
   const messageFieldValidation = {
     required: {
       value: true,
-      message: 'The message field is required.',
+      message: 'The message field is required.'
     },
     minLength: {
       value: 20,
-      message: 'The message field must be least 20 characters.',
-    },
+      message: 'The message field must be least 20 characters.'
+    }
   }
 
   return (
@@ -93,11 +93,11 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
             id="name"
             placeholder="John Doe"
             autoComplete="name"
-            className={`py-3 px-4 mt-1 ${
+            className={`mt-1 py-3 px-4 ${
               formState.errors.name
-                ? 'focus:ring-red-500 focus:border-red-500'
-                : 'focus:ring-green-500 focus:border-green-500'
-            } block w-full shadow-sm sm:text-sm border-gray-300 dark:bg-coolGray-800/50 dark:border-coolGray-800 dark:text-gray-300 rounded-md`}
+                ? 'focus:border-red-500 focus:ring-red-500'
+                : 'focus:border-green-500 focus:ring-green-500'
+            } block w-full rounded-md border-gray-300 shadow-sm dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
           />
           {formState.errors.name && (
             <span className="text-xs font-medium text-red-500">
@@ -118,11 +118,11 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
             id="email_address"
             autoComplete="email"
             placeholder="you@example.com"
-            className={`py-3 px-4 mt-1 ${
+            className={`mt-1 py-3 px-4 ${
               formState.errors.email
-                ? 'focus:ring-red-500 focus:border-red-500'
-                : 'focus:ring-green-500 focus:border-green-500'
-            } block w-full shadow-sm sm:text-sm border-gray-300 dark:bg-coolGray-800/50 dark:border-coolGray-800 rounded-md dark:text-gray-300`}
+                ? 'focus:border-red-500 focus:ring-red-500'
+                : 'focus:border-green-500 focus:ring-green-500'
+            } block w-full rounded-md border-gray-300 shadow-sm dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
           />
           {formState.errors.email && (
             <span className="text-xs font-medium text-red-500">
@@ -145,9 +145,9 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
             rows={5}
             className={`py-3 px-4 shadow-sm ${
               formState.errors.message
-                ? 'focus:ring-red-500 focus:border-red-500'
-                : 'focus:ring-green-500 focus:border-green-500'
-            } mt-1 block w-full resize-none sm:text-sm border border-gray-300 dark:bg-coolGray-800/50 dark:border-coolGray-800 dark:text-gray-300 rounded-md`}
+                ? 'focus:border-red-500 focus:ring-red-500'
+                : 'focus:border-green-500 focus:ring-green-500'
+            } mt-1 block w-full resize-none rounded-md border border-gray-300 dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
             placeholder="Your message here."
             defaultValue={''}
           />
@@ -165,7 +165,7 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
         <button
           disabled={isFetching || isLoading || formState.isSubmitting}
           type="submit"
-          className="mb-4 md:mb-0 inline-flex justify-center py-2.5 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-900">
+          className="mb-4 inline-flex justify-center rounded-md border border-transparent bg-green-700 py-2.5 px-6 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 md:mb-0">
           {formState.isSubmitting ? 'Sending..' : 'Send  Message'}
         </button>
       </div>

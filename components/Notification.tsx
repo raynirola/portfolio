@@ -3,7 +3,7 @@ import {
   CheckCircleIcon,
   ExclamationIcon,
   InformationCircleIcon,
-  ShieldExclamationIcon,
+  ShieldExclamationIcon
 } from '@heroicons/react/outline'
 import type { NotificationType } from '@/contexts/NotificationContext'
 
@@ -11,51 +11,51 @@ const Notification: FC<NotificationType> = ({ type, message, title }) => {
   switch (type) {
     case 'success':
       return (
-        <div className="flex items-start px-4 py-3 bg-white dark:bg-blueGray-800 sm:rounded-md mb-2 shadow-sm w-full sm:max-w-xs">
-          <CheckCircleIcon className="w-5 text-green-600 mr-2 flex-none" />
+        <div className="mb-2 flex w-full items-start bg-white px-4 py-3 shadow-sm dark:bg-blueGray-800 sm:max-w-xs sm:rounded-md">
+          <CheckCircleIcon className="mr-2 w-5 flex-none text-green-600" />
           <div className="flex-1">
-            <p className="font-medium text-sm text-green-600 mb-1">{title}</p>
-            <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{message}</p>
+            <p className="mb-1 text-sm font-medium text-green-600">{title}</p>
+            <p className="text-xs text-gray-600 line-clamp-2 dark:text-gray-300">{message}</p>
           </div>
         </div>
       )
     case 'danger':
       return (
-        <div className="flex items-start px-4 py-3 bg-white dark:bg-blueGray-800 sm:rounded-md mb-2 shadow-sm w-full sm:max-w-xs">
-          <ShieldExclamationIcon className="w-5 text-red-600 mr-2 flex-none" />
+        <div className="mb-2 flex w-full items-start bg-white px-4 py-3 shadow-sm dark:bg-blueGray-800 sm:max-w-xs sm:rounded-md">
+          <ShieldExclamationIcon className="mr-2 w-5 flex-none text-red-600" />
           <div className="flex-1">
-            <p className="font-medium text-sm text-red-600 mb-1">{title}</p>
-            <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{message}</p>
+            <p className="mb-1 text-sm font-medium text-red-600">{title}</p>
+            <p className="text-xs text-gray-600 line-clamp-2 dark:text-gray-300">{message}</p>
           </div>
         </div>
       )
     case 'warning':
       return (
-        <div className="flex items-start px-4 py-3 bg-white dark:bg-blueGray-800 sm:rounded-md mb-2 shadow-sm w-full sm:max-w-xs">
-          <ExclamationIcon className="w-5 text-yellow-600 mr-2 flex-none" />
+        <div className="mb-2 flex w-full items-start bg-white px-4 py-3 shadow-sm dark:bg-blueGray-800 sm:max-w-xs sm:rounded-md">
+          <ExclamationIcon className="mr-2 w-5 flex-none text-yellow-600" />
           <div className="flex-1">
-            <p className="font-medium text-sm text-yellow-600 mb-1">{title}</p>
-            <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{message}</p>
+            <p className="mb-1 text-sm font-medium text-yellow-600">{title}</p>
+            <p className="text-xs text-gray-600 line-clamp-2 dark:text-gray-300">{message}</p>
           </div>
         </div>
       )
     case 'info':
       return (
-        <div className="flex items-start px-4 py-3 bg-white dark:bg-blueGray-800 sm:rounded-md mb-2 shadow-sm w-full sm:max-w-xs">
-          <InformationCircleIcon className="w-5 text-blue-600 mr-2 flex-none" />
+        <div className="mb-2 flex w-full items-start bg-white px-4 py-3 shadow-sm dark:bg-blueGray-800 sm:max-w-xs sm:rounded-md">
+          <InformationCircleIcon className="mr-2 w-5 flex-none text-blue-600" />
           <div className="flex-1">
-            <p className="font-medium text-sm text-blue-600 mb-1">{title}</p>
-            <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{message}</p>
+            <p className="mb-1 text-sm font-medium text-blue-600">{title}</p>
+            <p className="text-xs text-gray-600 line-clamp-2 dark:text-gray-300">{message}</p>
           </div>
         </div>
       )
     default:
       return (
-        <div className="flex items-start px-4 py-3 bg-white dark:bg-blueGray-800 sm:rounded-md mb-2 shadow-sm w-full sm:max-w-xs">
-          <CheckCircleIcon className="w-5 text-gray-700 dark:text-gray-200 mr-2 flex-none" />
+        <div className="mb-2 flex w-full items-start bg-white px-4 py-3 shadow-sm dark:bg-blueGray-800 sm:max-w-xs sm:rounded-md">
+          <CheckCircleIcon className="mr-2 w-5 flex-none text-gray-700 dark:text-gray-200" />
           <div className="flex-1">
-            <p className="font-medium text-sm text-gray-700 dark:text-gray-200 mb-1">{title}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{message}</p>
+            <p className="mb-1 text-sm font-medium text-gray-700 dark:text-gray-200">{title}</p>
+            <p className="text-xs text-gray-500 line-clamp-2 dark:text-gray-400">{message}</p>
           </div>
         </div>
       )

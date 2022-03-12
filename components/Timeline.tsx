@@ -18,18 +18,18 @@ const Timeline: FC<TimelineProps> = ({ data, label, icon }) => {
     return (
       <div className="ml-2.5 flex justify-start">
         <div className="flex items-baseline space-x-8">
-          <div className="flex-shrink-0 ring-2 ring-green-700 ring-offset-2 dark:ring-offset-gray-900 bg-green-600 dark:bg-gray-300 w-3 h-3 rounded-full" />
+          <div className="h-3 w-3 flex-shrink-0 rounded-full bg-green-600 ring-2 ring-green-700 ring-offset-2 dark:bg-gray-300 dark:ring-offset-gray-900" />
           <div className="flex-1">
-            <div className="mb-2 text-gray-500 dark:text-gray-400 text-sm font-light">
+            <div className="mb-2 text-sm font-light text-gray-500 dark:text-gray-400">
               {timeline.year}
             </div>
-            <h3 className="font-semibold text-green-700 tracking-wide uppercase tracking-wider text-sm">
+            <h3 className="text-sm font-semibold uppercase tracking-wide tracking-wider text-green-700">
               {timeline.title}
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 text-xs tracking-wide font-semibold">
+            <p className="text-xs font-semibold tracking-wide text-gray-600 dark:text-gray-400">
               {timeline.subtitle}
             </p>
-            <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm">{timeline.description}</p>
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{timeline.description}</p>
           </div>
         </div>
       </div>
@@ -39,14 +39,14 @@ const Timeline: FC<TimelineProps> = ({ data, label, icon }) => {
   return (
     <div>
       <div className="flex items-center space-x-5">
-        <div className="flex items-center justify-center h-8 w-8 bg-green-700 rounded-full">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-700">
           {icon}
         </div>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">{label}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">{label}</p>
       </div>
 
       <div className="relative">
-        <div className="absolute left-4 h-full w-0.5 bg-green-700 rounded-full transform -translate-x-1/2" />
+        <div className="absolute left-4 h-full w-0.5 -translate-x-1/2 transform rounded-full bg-green-700" />
         <div className="relative space-y-12 pt-12">
           {data.map((timeline, index) => (
             <SingleTimeline key={index} {...timeline} />

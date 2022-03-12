@@ -1,36 +1,37 @@
-import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '@heroicons/react/solid'
 import { useTheme } from 'next-themes'
 import { useNotification } from '@/contexts/NotificationContext'
+import { MouseEventHandler } from 'react'
 
 const ThemeToggleButton = () => {
-  const [mounted, setMounted] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
-  const { addNotification } = useNotification()
+  const { notify } = useNotification()
 
-  useEffect(() => setMounted(true), [])
-
-  const handleClick = () => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-    addNotification({
+    notify({
       title: 'Theme changed',
       message: `Theme changed to ${resolvedTheme === 'dark' ? 'LIGHT' : 'DARK'}`,
-      type: 'info',
+      type: 'info'
     })
   }
 
   return (
     <button
       type="button"
-      className="w-10 h-10 p-3 transition-all duration-1000 ease-in-out bg-gray-200 rounded dark:bg-coolGray-800"
+      className="h-10 w-10 rounded bg-gray-200 p-3 transition-all duration-1000 ease-in-out dark:bg-coolGray-800"
       onClick={handleClick}>
-      {mounted && resolvedTheme === 'dark' ? (
-        <SunIcon className="w-4 h-4 text-gray-800 dark:text-gray-200" aria-hidden="true" />
-      ) : (
-        <MoonIcon className="w-4 h-4 text-gray-800 dark:text-gray-200" aria-hidden="true" />
-      )}
+      {resolvedTheme === 'dark' ? <LightIcon /> : <DarkIcon />}
     </button>
   )
 }
+
+const LightIcon = () => (
+  <SunIcon className="h-4 w-4 text-gray-800 dark:text-gray-200" aria-hidden="true" />
+)
+
+const DarkIcon = () => (
+  <MoonIcon className="h-4 w-4 text-gray-800 dark:text-gray-200" aria-hidden="true" />
+)
 
 export { ThemeToggleButton }
