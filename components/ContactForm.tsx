@@ -1,90 +1,72 @@
-import axios, { AxiosError, AxiosResponse } from 'axios'
-import { FC, HTMLAttributes } from 'react'
+import { FC, HTMLAttributes, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import { useQuery } from 'react-query'
 import { useNotification } from '@/contexts/NotificationContext'
 
 export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
   const { notify } = useNotification()
-  const { register, handleSubmit, formState, reset, getValues } = useForm()
+  const { register, handleSubmit, formState, reset } = useForm()
+  const [sending, setSending] = useState(false)
 
-  const sendContactMessage = async () => await axios.post('/api/contact', { ...getValues() })
-
-  const handleFormSubmit: SubmitHandler<FieldValues> = async () => await refetch()
-
-  const { isLoading, refetch, isFetching } = useQuery<AxiosResponse, AxiosError>(
-    'sendContactMessage',
-    sendContactMessage,
-    {
-      enabled: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      onSuccess: () => {
-        notify({
-          message: 'Message sent successfully, will get back to you soon.',
-          title: 'Message sent',
-          type: 'success'
-        })
-        reset()
-      },
-      onError: err => {
-        notify({
-          message: err.message,
-          title: 'Something went wrong',
-          type: 'danger'
-        })
-      }
+  const sendContactMessage: SubmitHandler<FieldValues> = async data => {
+    setSending(true)
+    try {
+      await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
+      notify({ title: 'Message sent', message: 'Thank you for your message!', type: 'success' })
+    } catch (_error) {
+      const error = _error as Error
+      notify({ title: 'Error sending message', message: error.message, type: 'error' })
+    } finally {
+      reset()
+      setSending(false)
     }
-  )
+  }
 
   const nameFieldValidation = {
     required: {
       value: true,
-      message: 'The name field is required.'
+      message: 'The name field is required.',
     },
     maxLength: {
       value: 32,
-      message: 'The name should not be more than 32 characters.'
+      message: 'The name should not be more than 32 characters.',
     },
     pattern: {
       value: /^[a-zA-Z0-9/ ]*$/,
-      message: 'The name may only contain letters and numbers.'
-    }
+      message: 'The name may only contain letters and numbers.',
+    },
   }
 
   const emailFieldValidation = {
     required: {
       value: true,
-      message: 'The email field is required.'
+      message: 'The email field is required.',
     },
     maxLength: {
       value: 255,
-      message: 'The email must be less than 255 characters.'
+      message: 'The email must be less than 255 characters.',
     },
     pattern: {
       value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.+([a-z]){2,6}$/,
-      message: 'Invalid email format.'
-    }
+      message: 'Invalid email format.',
+    },
   }
 
   const messageFieldValidation = {
     required: {
       value: true,
-      message: 'The message field is required.'
+      message: 'The message field is required.',
     },
     minLength: {
       value: 20,
-      message: 'The message field must be least 20 characters.'
-    }
+      message: 'The message field must be least 20 characters.',
+    },
   }
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} {...props}>
+    <form onSubmit={handleSubmit(sendContactMessage)} {...props}>
       <div className="grid grid-cols-6 gap-6">
         <div className="col-span-6 sm:col-span-3">
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Name
           </label>
           <input
@@ -97,19 +79,15 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
               formState.errors.name
                 ? 'focus:border-red-500 focus:ring-red-500'
                 : 'focus:border-purple-700 focus:ring-purple-700'
-            } block w-full rounded-md border-gray-300 shadow-sm dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
+            } dark:border-coolGray-800 dark:bg-coolGray-800/50 block w-full rounded-md border-gray-300 shadow-sm dark:text-gray-300 sm:text-sm`}
           />
           {formState.errors.name && (
-            <span className="text-xs font-medium text-red-500">
-              {formState.errors.name.message}
-            </span>
+            <span className="text-xs font-medium text-red-500">{formState.errors.name.message}</span>
           )}
         </div>
 
         <div className="col-span-6 sm:col-span-3">
-          <label
-            htmlFor="email_address"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label htmlFor="email_address" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
             Email address
           </label>
           <input
@@ -122,20 +100,16 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
               formState.errors.email
                 ? 'focus:border-red-500 focus:ring-red-500'
                 : 'focus:border-purple-700 focus:ring-purple-700'
-            } block w-full rounded-md border-gray-300 shadow-sm dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
+            } dark:border-coolGray-800 dark:bg-coolGray-800/50 block w-full rounded-md border-gray-300 shadow-sm dark:text-gray-300 sm:text-sm`}
           />
           {formState.errors.email && (
-            <span className="text-xs font-medium text-red-500">
-              {formState.errors.email.message}
-            </span>
+            <span className="text-xs font-medium text-red-500">{formState.errors.email.message}</span>
           )}
         </div>
       </div>
 
       <div className="mt-4">
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
           About
         </label>
         <div className="mt-1">
@@ -147,7 +121,7 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
               formState.errors.message
                 ? 'focus:border-red-500 focus:ring-red-500'
                 : 'focus:border-purple-700 focus:ring-purple-700'
-            } mt-1 block w-full resize-none rounded-md border border-gray-300 dark:border-coolGray-800 dark:bg-coolGray-800/50 dark:text-gray-300 sm:text-sm`}
+            } dark:border-coolGray-800 dark:bg-coolGray-800/50 mt-1 block w-full resize-none rounded-md border border-gray-300 dark:text-gray-300 sm:text-sm`}
             placeholder="Your message here."
             defaultValue={''}
           />
@@ -156,14 +130,12 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
           Something interesting perhaps. URLs are hyperlinked.
         </p>
         {formState.errors.message && (
-          <span className="text-xs font-medium text-red-500">
-            {formState.errors.message.message}
-          </span>
+          <span className="text-xs font-medium text-red-500">{formState.errors.message.message}</span>
         )}
       </div>
       <div className="flex flex-col-reverse justify-between py-3 md:flex-row md:items-center">
         <button
-          disabled={isFetching || isLoading || formState.isSubmitting}
+          disabled={sending || formState.isSubmitting}
           type="submit"
           className="mb-4 inline-flex justify-center rounded-md border border-transparent bg-purple-700 py-2.5 px-6 text-sm font-medium text-white shadow-sm hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:ring-offset-2 dark:focus:ring-offset-gray-900 md:mb-0">
           {formState.isSubmitting ? 'Sending..' : 'Send  Message'}
