@@ -8,19 +8,15 @@ const Home: NextPage = () => {
     <BaseLayout>
       <Intro className="mx-auto mt-12 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl" />
 
-      <Section
-        title="Introduction"
-        className="mx-auto mt-20 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl">
-        <h1 className="mb-4 text-base text-gray-800 dark:text-slate-400">
-          I am Ray, from Sikkim, India.
-        </h1>
+      <Section title="Introduction" className="mx-auto mt-20 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl">
+        <h1 className="mb-4 text-base text-gray-800 dark:text-slate-400">I am Ray, from Sikkim, India.</h1>
         <p className="mb-4 text-base text-gray-800 dark:text-slate-400">
           I enjoy creating high-quality software products with a complex logic behind it.
           <br />
-          My everyday technology stack includes React, Vue, Python, Flutter and Laravel.
+          My everyday technology stack includes NodeJS, React, MongoDB, AWS and more.
         </p>
         <p className="text-base text-gray-800 dark:text-slate-400">
-          I am also currently learning more about Ethereum blockchain and cyber-security.
+          I am also currently learning more about Ethereum blockchain and Web3.
         </p>
       </Section>
 
@@ -29,8 +25,8 @@ const Home: NextPage = () => {
         title="Projects"
         description={
           <span>
-            Here are some of my most favourite projects that I enjoyed coding and designing from
-            scratch, both with a team and alone. Checkout my{' '}
+            Here are some of my most favourite projects that I enjoyed coding and designing from scratch, both with a
+            team and alone. Checkout my{' '}
             <a
               target="_blank"
               rel="noreferrer nofollow noopener"
