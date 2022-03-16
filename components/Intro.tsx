@@ -21,7 +21,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
               </div>
             </a>
             <a
-              href="mailto:hi@raynirola.dev?subject=Saying%20Hello"
+              href="mailto:ray@nirola.tech?subject=Business Inquiry"
               target="_blank"
               title="Send Email"
               rel="noopener noreferrer"
