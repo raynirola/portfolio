@@ -33,7 +33,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({ message: 'Message sent successfully' })
     } catch (_error) {
       const error = _error as ResponseError
-      console.log(JSON.stringify(error))
       res.status(error.code).json({ error: error.message })
     }
   } else {
