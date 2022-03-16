@@ -9,7 +9,7 @@ export const Projects: FC = (): ReactElement => {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-6 xl:grid-cols-4">
       <ProjectCard
         title="Memeberg Terminal"
         url="https://memebergterminal.com"
