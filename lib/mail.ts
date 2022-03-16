@@ -1,9 +1,5 @@
-import mg from 'mailgun-js'
+import mailer from '@sendgrid/mail'
 
-const mailer = mg({
-  apiKey: process.env.MAILGUN_APIKEY as string,
-  domain: process.env.MAILGUN_DOMAIN as string,
-  host: 'api.eu.mailgun.net'
-})
+mailer.setApiKey(process.env.SENDGRID_API_KEY as string)
 
 export { mailer }

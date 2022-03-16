@@ -1,9 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import type { MailDataRequired } from '@sendgrid/mail'
+import { ResponseError } from '@sendgrid/mail'
 import { mailer } from '@/lib/mail'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
-    const { name, email, message } = req.body
+    const { name, email, message } = JSON.parse(req.body)
 
     if (!name || !email || !message) {
       return res.status(422).json({
@@ -19,19 +21,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       })
     }
 
-    const data = {
-      from: `"${name}" <${process.env.FROM_EMAIL}>`,
+    const data: MailDataRequired = {
+      from: `${name} <${process.env.FROM_EMAIL}>`,
       to: process.env.ADMIN_EMAIL as string,
       subject: 'Contact Message',
       text: `From: \n${email} \n\n\nMessage: \n${message}`,
     }
 
     try {
-      const response = await mailer.messages().send(data)
-      res.status(200).json({ message: response.message })
-    } catch (_error) {
-      const error = _error as Error
-      res.status(500).json({ message: error.message })
+      await mailer.send(data)
+      res.status(200).json({ message: 'Message sent successfully' })
+    } catch (error) {
+      if (error instanceof ResponseError) {
+        res.status(error.code).json({ error: error.message })
+      }
+      res.status(500).json({ error: 'An error occurred, please try again' })
     }
   } else {
     res.setHeader('Allow', 'POST')
