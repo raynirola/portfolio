@@ -121,7 +121,7 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
               formState.errors.message
                 ? 'focus:border-red-500 focus:ring-red-500'
                 : 'focus:border-purple-700 focus:ring-purple-700'
-            } dark:border-coolGray-800 dark:bg-coolGray-800/50 mt-1 block w-full resize-none rounded-md border border-gray-300 dark:text-gray-300 sm:text-sm`}
+            } dark:border-coolGray-800 dark:bg-coolGray-800/50 mt-1 block w-full resize-none rounded-md border border-gray-300 text-gray-600 dark:text-gray-300 sm:text-sm`}
             placeholder="Your message here."
             defaultValue={''}
           />
