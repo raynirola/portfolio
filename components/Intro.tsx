@@ -44,7 +44,7 @@ const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
         </div>
 
         <div className="relative">
-          <HeroPattern className="absolute top-12 left-4 z-0 h-auto w-48 text-green-600 opacity-50 lg:w-64" />
+          <HeroPattern className="absolute top-12 left-4 z-0 h-auto w-48 text-purple-700 opacity-50 lg:w-64" />
           <HeroImageMask />
           <div className="relative z-10 h-48 w-48 lg:h-60 lg:w-64" style={{ clipPath: 'url(#heroImageMask)' }}>
             <Image
