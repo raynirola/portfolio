@@ -31,11 +31,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       await mailer.send(data)
       res.status(200).json({ message: 'Message sent successfully' })
-    } catch (error) {
-      if (error instanceof ResponseError) {
-        res.status(error.code).json({ error: error.message })
-      }
-      res.status(500).json({ error: 'An error occurred, please try again' })
+    } catch (_error) {
+      const error = _error as ResponseError
+      res.status(error.code).json({ error: error.message })
     }
   } else {
     res.setHeader('Allow', 'POST')
