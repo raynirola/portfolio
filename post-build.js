@@ -1,5 +1,6 @@
-import fs from 'fs'
-import path from 'path'
+/* eslint-disable @typescript-eslint/no-var-requires */
+const fs = require('fs')
+const path = require('path')
 
 const content = `
 # *
