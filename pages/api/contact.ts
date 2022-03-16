@@ -24,6 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const data: MailDataRequired = {
       from: `${name} <${process.env.FROM_EMAIL}>`,
       to: process.env.ADMIN_EMAIL as string,
+      replyTo: email,
       subject: 'Contact Message',
       text: `From: \n${email} \n\n\nMessage: \n${message}`,
     }
