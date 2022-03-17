@@ -62,7 +62,7 @@ export const Projects: FC = (): ReactElement => {
       />
       <ProjectCard
         title="Goldilock"
-        url="https://play.google.com/store/apps/details?id=com.goldilock.app"
+        url="https://goldilockapp.com"
         image={renderImage('/images/projects/goldilock.png')}
         wip
       />
