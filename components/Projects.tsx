@@ -15,11 +15,7 @@ export const Projects: FC = (): ReactElement => {
         url="https://memebergterminal.com"
         image={renderImage('/images/projects/memebergterminal.png')}
       />
-      <ProjectCard
-        title="Eagle Aid"
-        image={renderImage('/images/projects/eagle-aid.png')}
-        url="https://eagle-aid.com"
-      />
+      <ProjectCard title="Eagle Aid" image={renderImage('/images/projects/eagle-aid.png')} />
       <ProjectCard
         title="Noti Finance"
         image={
