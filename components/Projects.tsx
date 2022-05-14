@@ -48,7 +48,6 @@ export const Projects: FC = (): ReactElement => {
           </svg>
         }
         url="https://digit-mine.com"
-        wip
       />
       <ProjectCard
         title="Sikkim Store"
@@ -60,7 +59,6 @@ export const Projects: FC = (): ReactElement => {
         title="Goldilock"
         url="https://goldilockapp.com"
         image={renderImage('/images/projects/goldilock.png')}
-        wip
       />
     </div>
   )
