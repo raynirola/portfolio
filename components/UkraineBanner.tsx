@@ -8,7 +8,7 @@ const UkraineBanner = () => {
           <span className="mr-2">I stand with Ukraine</span>
           <Image src={'/ukraine-flag.png'} alt="Ukraine Flag" width={30} height={30} />
         </h2>
-        <p className="mt-1 leading-relaxed text-purple-300 md:text-sm">
+        <p className="mt-1 py-4 text-purple-300 sm:py-0 sm:leading-relaxed md:text-sm">
           The Russian government&apos;s attack on Ukraine has put millions of innocent lives in danger. I stand with
           Ukraine to support their freedom and to defend democracy. If you wish to support Ukraine and its people in
           their time of need, please consider {''}

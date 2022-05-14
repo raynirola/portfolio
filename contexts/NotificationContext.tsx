@@ -1,4 +1,4 @@
-import React, { createContext, FC, useContext, useEffect, useState } from 'react'
+import React, { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from 'react'
 import { Transition } from '@headlessui/react'
 import { Notification } from '@/components/Notification'
 import dynamic from 'next/dynamic'
@@ -9,9 +9,7 @@ interface NotificationContextProps {
 
 type Notify = (notification: NotificationType) => void
 
-export const NotificationContext = createContext<NotificationContextProps>(
-  {} as NotificationContextProps
-)
+export const NotificationContext = createContext<NotificationContextProps>({} as NotificationContextProps)
 
 export type NotificationType = {
   message: string
@@ -21,7 +19,7 @@ export type NotificationType = {
 
 const Portal = dynamic(() => import('@/components/Portal'), { ssr: false })
 
-export const NotificationProvider: FC = props => {
+export const NotificationProvider: FC<PropsWithChildren<unknown>> = props => {
   const [notification, setNotification] = useState<NotificationType>({} as NotificationType)
 
   const notify: Notify = n => {
@@ -48,11 +46,7 @@ export const NotificationProvider: FC = props => {
             leave="transition duration-300 transform ease-out"
             leaveFrom="opacity-100 translate-x-0"
             leaveTo="opacity-0 translate-x-full">
-            <Notification
-              title={notification.title}
-              message={notification.message}
-              type={notification.type}
-            />
+            <Notification title={notification.title} message={notification.message} type={notification.type} />
           </Transition>
         </div>
       </Portal>
@@ -65,8 +59,7 @@ type UseNotification = () => {
 }
 
 export const useNotification: UseNotification = () => {
-  const { notify } = useContext(NotificationContext)
-  return {
-    notify
-  }
+  const context = useContext(NotificationContext)
+  if (!context) throw new Error('useNotification must be used within a NotificationProvider')
+  return { notify: context.notify }
 }
