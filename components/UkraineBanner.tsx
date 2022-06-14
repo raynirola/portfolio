@@ -26,4 +26,4 @@ const UkraineBanner = () => {
   )
 }
 
-export { UkraineBanner }
+export default UkraineBanner

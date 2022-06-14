@@ -1,5 +1,5 @@
-import { FC, HTMLProps, SVGProps } from 'react'
 import Image from 'next/image'
+import { FC, HTMLProps, SVGProps } from 'react'
 
 const Intro: FC<HTMLProps<HTMLDivElement>> = props => {
   return (
@@ -136,4 +136,4 @@ const HeroImageMask = (props: Pick<SVGProps<SVGSVGElement>, 'className'>) => {
   )
 }
 
-export { Intro }
+export default Intro

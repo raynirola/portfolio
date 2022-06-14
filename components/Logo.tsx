@@ -16,4 +16,4 @@ const Logo: FC = () => {
   )
 }
 
-export { Logo }
+export default Logo

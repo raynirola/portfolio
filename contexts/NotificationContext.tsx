@@ -1,37 +1,21 @@
-import React, { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from 'react'
 import { Transition } from '@headlessui/react'
-import { Notification } from '@/components/Notification'
 import dynamic from 'next/dynamic'
+import { createContext, FC, PropsWithChildren, useContext, useState } from 'react'
 
-interface NotificationContextProps {
-  notify: Notify
-}
+import Notification from '@/components/Notification'
+import { INotificationContext, NotificationProps } from '@/types'
 
-type Notify = (notification: NotificationType) => void
-
-export const NotificationContext = createContext<NotificationContextProps>({} as NotificationContextProps)
-
-export type NotificationType = {
-  message: string
-  title?: string
-  type: 'success' | 'error' | 'warning' | 'info' | string
-}
+const NotificationContext = createContext<INotificationContext>({} as INotificationContext)
 
 const Portal = dynamic(() => import('@/components/Portal'), { ssr: false })
 
-export const NotificationProvider: FC<PropsWithChildren<unknown>> = props => {
-  const [notification, setNotification] = useState<NotificationType>({} as NotificationType)
+const NotificationProvider: FC<PropsWithChildren<unknown>> = props => {
+  const [notification, setNotification] = useState<NotificationProps | null>(null)
 
-  const notify: Notify = n => {
+  const notify = (n: NotificationProps) => {
     setNotification(n)
+    setTimeout(() => setNotification(null), 4000)
   }
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setNotification({} as NotificationType)
-    }, 3000)
-    return () => clearTimeout(timeout)
-  }, [notification])
 
   return (
     <NotificationContext.Provider value={{ notify }}>
@@ -39,14 +23,14 @@ export const NotificationProvider: FC<PropsWithChildren<unknown>> = props => {
       <Portal>
         <div className="pointer-events-none fixed top-0 right-0 left-0 z-20 sm:top-4 sm:right-4 sm:left-auto sm:w-full sm:max-w-xs">
           <Transition
-            show={Object.keys(notification).length > 0}
+            show={!!notification}
             enter="transition duration-300 transform ease-in"
             enterFrom="opacity-0 translate-x-full"
             enterTo="opacity-100 translate-x-0"
             leave="transition duration-300 transform ease-out"
             leaveFrom="opacity-100 translate-x-0"
             leaveTo="opacity-0 translate-x-full">
-            <Notification title={notification.title} message={notification.message} type={notification.type} />
+            <Notification title={notification?.title} message={notification?.message} type={notification?.type} />
           </Transition>
         </div>
       </Portal>
@@ -54,12 +38,10 @@ export const NotificationProvider: FC<PropsWithChildren<unknown>> = props => {
   )
 }
 
-type UseNotification = () => {
-  notify: Notify
-}
+export default NotificationProvider
 
-export const useNotification: UseNotification = () => {
+export const useNotification = () => {
   const context = useContext(NotificationContext)
   if (!context) throw new Error('useNotification must be used within a NotificationProvider')
-  return { notify: context.notify }
+  return context
 }

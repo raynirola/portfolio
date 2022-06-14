@@ -1,7 +1,8 @@
-import { NotificationProvider } from '@/contexts/NotificationContext'
+import type { AppProps } from 'next/app'
+
+import NotificationProvider from '@/contexts/NotificationContext'
 import Analytics from '@/scripts/analytics'
 import '@/styles/app.css'
-import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

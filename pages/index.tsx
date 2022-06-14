@@ -1,11 +1,20 @@
 import type { NextPage } from 'next'
+import { Fragment } from 'react'
 
-import { BaseLayout } from '@/layouts'
-import { ContactForm, Intro, Projects, Section, Skills } from '@/components'
+import ContactForm from '@/components/ContactForm'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import Intro from '@/components/Intro'
+import Meta from '@/components/Meta'
+import Projects from '@/components/Projects'
+import Section from '@/components/Section'
+import Skills from '@/components/Skills'
 
 const Home: NextPage = () => {
   return (
-    <BaseLayout>
+    <Fragment>
+      <Meta />
+      <Header />
       <Intro className="mx-auto mt-12 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl" />
 
       <Section title="Introduction" className="mx-auto mt-20 max-w-3xl px-4 sm:px-6 lg:max-w-4xl lg:px-0 xl:max-w-5xl">
@@ -59,7 +68,8 @@ const Home: NextPage = () => {
           <ContactForm className="mt-12" />
         </Section>
       </div>
-    </BaseLayout>
+      <Footer />
+    </Fragment>
   )
 }
 

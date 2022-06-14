@@ -1,4 +1,4 @@
-export const Skills = () => {
+const Skills = () => {
   return (
     <div className="grid grid-cols-3 place-items-center gap-2 md:grid-cols-4 md:gap-6 xl:grid-cols-5">
       <div className="dark:bg-coolGray-800/50 w-full rounded-md bg-white pt-3 pb-2 text-center text-gray-700 dark:text-gray-300">
@@ -66,3 +66,5 @@ export const Skills = () => {
     </div>
   )
 }
+
+export default Skills

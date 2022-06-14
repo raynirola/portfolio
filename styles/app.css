@@ -3,12 +3,6 @@
 @tailwind utilities;
 @tailwind screens;
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
 @layer utilities {
   .header {
     @apply bg-opacity-0 backdrop-blur-lg;

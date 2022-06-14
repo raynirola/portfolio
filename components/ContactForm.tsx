@@ -1,8 +1,8 @@
+import { useNotification } from '@/contexts/NotificationContext'
 import { FC, HTMLAttributes, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import { useNotification } from '@/contexts/NotificationContext'
 
-export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
+const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
   const { notify } = useNotification()
   const { register, handleSubmit, formState, reset } = useForm()
   const [sending, setSending] = useState(false)
@@ -144,3 +144,5 @@ export const ContactForm: FC<HTMLAttributes<HTMLFormElement>> = props => {
     </form>
   )
 }
+
+export default ContactForm

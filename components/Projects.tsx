@@ -1,9 +1,8 @@
-import { FC, ReactElement } from 'react'
+import ProjectCard from '@/components/ProjectCard'
 import Image from 'next/image'
+import { FC, ReactElement } from 'react'
 
-import { ProjectCard } from '@/components'
-
-export const Projects: FC = (): ReactElement => {
+const Projects: FC = (): ReactElement => {
   const renderImage = (path: string): ReactElement => {
     return <Image alt="Logo of Sikkim Store" objectFit="contain" layout="fill" src={path} />
   }
@@ -63,3 +62,5 @@ export const Projects: FC = (): ReactElement => {
     </div>
   )
 }
+
+export default Projects
