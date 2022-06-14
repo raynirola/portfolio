@@ -29,7 +29,7 @@ const Meta: FC = () => {
         content="Ideas to execution, perfectly. Ethereum Blockchain, Web3, React, Next.js, Tailwind Css, GraphQL, Node.js, MySQL, PostgresSQL, Express, AWS, and more."
       />
       <meta property="og:title" content="Ray Nirola | Full Stack Developer" />
-      <meta property="og:image" content="https://www.nirola.tech/images/me.png" />
+      <meta property="og:image" content="https://www.nirola.tech/meta.png" />
       <meta property="og:url" content="https://www.nirola.tech" />
 
       <meta name="twitter:card" content="summary_large_image" />
@@ -39,7 +39,7 @@ const Meta: FC = () => {
         name="twitter:description"
         content="Ideas to execution, perfectly. Ethereum Blockchain, Web3, React, Next.js, Tailwind Css, GraphQL, Node.js, MySQL, PostgresSQL, Express, AWS, and more."
       />
-      <meta name="twitter:image" content="https://www.nirola.tech/images/me.png" />
+      <meta name="twitter:image" content="https://www.nirola.tech/meta.png" />
     </Head>
   )
 }
