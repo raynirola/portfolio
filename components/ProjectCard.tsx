@@ -41,13 +41,13 @@ const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, status = 'live',
 
   function Description() {
     if (!description) return null
-    return <p className="text-xs text-gray-500 mt-1 px-6">{description}</p>
+    return <p className="text-xs text-gray-500 mt-1 px-6 hidden sm:block">{description}</p>
   }
 
   function Tags() {
     if (!tags) return null
     return (
-      <div className="absolute bottom-2 md:bottom-4 lg:bottom-2 inset-x-0">
+      <div className="absolute bottom-2 md:bottom-4 lg:bottom-2 inset-x-0 hidden sm:block">
         <ul className="flex flex-wrap justify-center -ml-2 text-[10px] font-bold tracking-tighter px-4">
           {tags.slice(0, 4).map((tag, index) => (
             <li key={index} className="ml-2 text-gray-500 inline-flex items-center mt-1">
