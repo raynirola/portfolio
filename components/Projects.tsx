@@ -8,13 +8,22 @@ const Projects: FC = (): ReactElement => {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-6 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 md:gap-6 xl:grid-cols-3">
       <ProjectCard
         title="Memeberg Terminal"
         url="https://memebergterminal.com"
         image={renderImage('/images/projects/memebergterminal.png')}
+        description="Stocks and Crypto mentions & sentiment analytics."
+        tags={['NextJS', 'WEb3', 'MongoDB', 'Stripe']}
       />
-      <ProjectCard title="Eagle Aid" image={renderImage('/images/projects/eagle-aid.png')} />
+      <ProjectCard
+        title="Eagle Aid"
+        image={renderImage('/images/projects/eagle-aid.png')}
+        description="Putt like a pro with Eagle Aid. Easy to use, fast and fun."
+        status="abandoned"
+        url="https://eagle-aid.com"
+        tags={['NextJS', 'TypeScript', 'Stripe']}
+      />
       <ProjectCard
         title="Noti Finance"
         image={
@@ -29,35 +38,38 @@ const Projects: FC = (): ReactElement => {
           </svg>
         }
         url="https://app.noti.finance"
+        description="Track NFTs, Alphas, Whales. Get realtime updates."
+        tags={['NextJS', 'TypeScript', 'Express', 'MongoDB']}
       />
       <ProjectCard
         title="DIGIT MINE"
-        image={
-          <svg
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            className="mx-auto h-10 w-10 text-purple-700">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-            />
-          </svg>
-        }
+        image={renderImage('/images/projects/digitmine.png')}
         url="https://digit-mine.com"
+        description="Artificial intelligence-driven crypto miner that generates passive income."
+        tags={['NextJS', 'TypeScript', 'Web3', 'MongoDB']}
       />
       <ProjectCard
         title="Sikkim Store"
         url="https://sikkim.store"
         image={renderImage('/images/projects/sikkimstore.png')}
-        wip
+        status="wip"
+        description="Sustainable, eco-friendly, and affordable products from Sikkim"
+        tags={['Prisma', 'NextJS', 'Tailwind', 'Redux']}
       />
       <ProjectCard
         title="Goldilock"
         url="https://goldilockapp.com"
         image={renderImage('/images/projects/goldilock.png')}
+        description="Get paid for your attention, earn points and exchange gift cards."
+        tags={['React Native', 'NodeJS', 'Android']}
+      />
+      <ProjectCard
+        title="Concert Cal"
+        url="https://concertcal.com"
+        image={renderImage('/images/projects/concertcal.png')}
+        status="wip"
+        description="Connect your Spotify and Google Calendar and never miss a concert!"
+        tags={['NextJS', 'Prisma', 'Express', 'TypeScript']}
       />
     </div>
   )

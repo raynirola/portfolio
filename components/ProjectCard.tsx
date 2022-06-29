@@ -1,49 +1,78 @@
+import { HashtagIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { FC, ReactElement } from 'react'
 
 interface ProjectCardProps {
   image?: ReactElement
   title: string
-  url?: string
-  wip?: boolean
+  url: string
+  status?: 'abandoned' | 'wip' | 'live'
+  description?: string
+  tags?: string[]
 }
 
-const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, wip = false }): ReactElement => {
-  function renderComingSoon() {
+const ProjectCard: FC<ProjectCardProps> = ({ image, title, url, status = 'live', description, tags }): ReactElement => {
+  function Status() {
+    if (!status) return null
+
+    if (status === 'live') {
+      return (
+        <>
+          <div className="absolute right-2 top-2 rounded-full bg-green-500 w-2 h-2" />
+          <div className="absolute right-2 top-2 rounded-full bg-green-500 w-2 h-2 animate-ping" />
+        </>
+      )
+    }
+
+    if (status === 'abandoned') {
+      return <div className="absolute right-2 top-2 rounded-full bg-red-500 w-2 h-2" />
+    }
+
+    return <div className="absolute right-2 top-2 rounded-full bg-blue-500 w-2 h-2" />
+  }
+
+  function ProjectImage() {
+    return <div className="relative h-10 w-20 sm:h-12 sm:w-24 mx-auto">{image}</div>
+  }
+
+  function Title() {
+    return <p className="mt-2 text-xs font-bold uppercase tracking-tight text-gray-700">{title}</p>
+  }
+
+  function Description() {
+    if (!description) return null
+    return <p className="text-xs text-gray-500 mt-1 px-6">{description}</p>
+  }
+
+  function Tags() {
+    if (!tags) return null
     return (
-      <div className="absolute right-2 top-2 rounded-md bg-green-200 px-1 py-0.5 text-[10px] font-medium text-green-700">
-        WIP
+      <div className="absolute bottom-2 md:bottom-4 lg:bottom-2 inset-x-0">
+        <ul className="flex flex-wrap justify-center -ml-2 text-[10px] font-bold tracking-tighter px-4">
+          {tags.slice(0, 4).map((tag, index) => (
+            <li key={index} className="ml-2 text-gray-500 inline-flex items-center mt-1">
+              <HashtagIcon className="w-3 h-3 fill-current text-blue-600" />
+              {tag}
+            </li>
+          ))}
+        </ul>
       </div>
     )
   }
 
-  function renderAsDiv() {
-    return (
-      <div className="aspect-[2/1] overflow-hidden rounded-md bg-white grid place-content-center place-items-center">
-        {wip && renderComingSoon()}
-        <div className=" p-2 text-center text-gray-700">
-          <div className="relative h-10 w-20 sm:h-12 sm:w-24 mx-auto">{image}</div>
-          <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-gray-700">{title}</p>
-        </div>
-      </div>
-    )
-  }
-
-  function renderAsLink(url: string) {
-    return (
-      <div className="relative transition ease-in-out duration-300 p-2 text-center aspect-[2/1] overflow-hidden rounded-md bg-white ring-1 ring-transparent ring-offset-2 ring-offset-gray-100 hover:ring-2 hover:ring-purple-500  grid place-content-center place-items-center">
-        {wip && renderComingSoon()}
-        <Link href={url}>
-          <a target="_blank" rel="nofollow noopener noreferrer" className="text-gray-700">
-            <div className="relative h-10 w-20 sm:h-12 sm:w-24 mx-auto">{image}</div>
-            <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-gray-700">{title}</p>
-          </a>
-        </Link>
-      </div>
-    )
-  }
-
-  return url ? renderAsLink(url) : renderAsDiv()
+  return (
+    <div className="relative transition ease-in-out duration-300 py-4 px-2 text-center aspect-[3/2] md:aspect-[5/3] lg:aspect-[2/1] xl:aspect-[16/9] overflow-hidden rounded-md bg-white ring-1 ring-purple-600/20 hover:ring-offset-2 hover:ring-offset-gray-100 hover:ring-2 hover:ring-purple-500  flex flex-col justify-center items-center">
+      <Status />
+      <Link href={url}>
+        <a target="_blank" rel="nofollow noopener noreferrer" className="text-gray-700">
+          <ProjectImage />
+          <Title />
+          <Description />
+          <Tags />
+        </a>
+      </Link>
+    </div>
+  )
 }
 
 export default ProjectCard
